@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Pins</h1>
+
+<div id="pins">
+  <% @pins.each do |pin| %>
+
+    <%= link_to pin, class: 'pinCard' do %>
+      <%= render pin %>
+    <% end %>
+
+  <% end %>
+</div>
+
+<%= link_to "New pin", new_pin_path %>

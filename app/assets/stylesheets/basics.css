@@ -1,0 +1,14 @@
+h1 {
+  font-family: Helvetica;
+}
+
+.pinCard {
+  display: block;
+  width: 500px;
+  padding: 20px;
+  border: 1px solid grey;
+  border-radius: 16px;
+  margin: 20px;
+  text-decoration: none;
+  color: black;
+}
