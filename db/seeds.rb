@@ -3,7 +3,6 @@ words = raw_text.downcase.gsub(/[—.—,«»:()]/, '').gsub(/  /, ' ').split(' 
 
 # puts words
 
-
 100.times do
   sentence_words = []
 
@@ -15,5 +14,4 @@ words = raw_text.downcase.gsub(/[—.—,«»:()]/, '').gsub(/  /, ' ').split(' 
 
   puts sentence
   puts "\n\n"
-
 end
