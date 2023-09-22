@@ -3,7 +3,7 @@
 
 def seed
   reset_db
-  create_pins(10)
+  create_pins(100)
   create_comments(2..8)
 end
 
@@ -23,9 +23,15 @@ def create_sentence
   sentence = sentence_words.join(' ').capitalize + '.'
 end
 
+def upload_random_image
+  uploader = PinImageUploader.new(Pin.new, :pin_image)
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/autoupload/pins', '*')).sample))
+  uploader
+end
+
 def create_pins(quantity)
   quantity.times do
-    pin = Pin.create(title: create_sentence, description: create_sentence)
+    pin = Pin.create(title: create_sentence, description: create_sentence, pin_image: upload_random_image)
     puts "Pin with id #{pin.id} just created"
   end
 end
