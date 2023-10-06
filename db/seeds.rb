@@ -3,6 +3,7 @@
 
 def seed
   reset_db
+  create_users
   create_pins(100)
   create_comments(2..8)
 end
@@ -11,6 +12,27 @@ def reset_db
   Rake::Task['db:drop'].invoke
   Rake::Task['db:create'].invoke
   Rake::Task['db:migrate'].invoke
+end
+
+def create_users
+  i = 0
+
+  10.times do
+    user_data = {
+      email: "user_#{i}@email.com",
+      password: 'testtest'
+    }
+
+    # if i == 0
+    #   user_data[:email] = "admin@email.com"
+    #   user_data[:admin] = true
+    # end
+
+    user = User.create!(user_data)
+    puts "User created with id #{user.id}"
+
+    i += 1
+  end
 end
 
 def create_sentence
@@ -31,7 +53,8 @@ end
 
 def create_pins(quantity)
   quantity.times do
-    pin = Pin.create(title: create_sentence, description: create_sentence, pin_image: upload_random_image)
+    user = User.all.sample
+    pin = Pin.create(title: create_sentence, description: create_sentence, pin_image: upload_random_image, user_id: user.id)
     puts "Pin with id #{pin.id} just created"
   end
 end
@@ -39,7 +62,8 @@ end
 def create_comments(quantity)
   Pin.all.each do |pin|
     quantity.to_a.sample.times do
-      comment = Comment.create(pin_id: pin.id, body: create_sentence)
+      user = User.all.sample
+      comment = Comment.create(pin_id: pin.id, body: create_sentence, user_id: user.id)
       puts "Comment with id #{comment.id} for pin with id #{comment.pin.id} just created"
     end
   end

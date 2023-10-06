@@ -2,6 +2,8 @@
 
 <%= render @pin %>
 
+<%= link_to "New Comment", new_pin_comment_path(@pin) %>
+
 <h2>Comments</h2>
 
 <%= render @pin.comments %>

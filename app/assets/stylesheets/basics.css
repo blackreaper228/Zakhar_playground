@@ -12,3 +12,9 @@ h1 {
   text-decoration: none;
   color: black;
 }
+
+.menubar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
