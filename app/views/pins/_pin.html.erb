@@ -1,5 +1,5 @@
 <div id="<%= dom_id pin %>">
-  <%= image_tag pin.pin_image.url, width: 300 %>
+  <%= image_tag pin.pin_image.url, width: 300 if pin.pin_image.url %>
 
   <p>
     <strong>Title:</strong>

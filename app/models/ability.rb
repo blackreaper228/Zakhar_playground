@@ -11,6 +11,7 @@ class Ability
     can :create, Comment
 
     if user
+      can :manage, Pin, user_id: user.id
       can :manage, Comment, user_id: user.id
     end
 

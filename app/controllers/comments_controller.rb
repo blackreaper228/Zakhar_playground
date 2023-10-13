@@ -19,8 +19,8 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    # @comment = @pin.comments.new(comment_params)
-    @comment = @pin.comments.new(body: params[:comment][:body], user_id: current_user.id)
+    @comment = @pin.comments.new(comment_params)
+    # @comment = @pin.comments.new(body: params[:comment][:body], user_id: current_user.id)
 
     respond_to do |format|
       if @comment.save
@@ -68,6 +68,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:body)
+      params.require(:comment).permit(:body).merge(user_id: current_user.id)
     end
 end
