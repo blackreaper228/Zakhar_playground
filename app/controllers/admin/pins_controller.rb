@@ -1,4 +1,4 @@
-class PinsController < ApplicationController
+class Admin::PinsController < ApplicationController
   load_and_authorize_resource
   before_action :set_pin, only: %i[ show edit update destroy ]
 
@@ -26,7 +26,7 @@ class PinsController < ApplicationController
 
     respond_to do |format|
       if @pin.save
-        format.html { redirect_to pin_url(@pin), notice: "Pin was successfully created." }
+        format.html { redirect_to admin_pin_url(@pin), notice: "Pin was successfully created." }
         format.json { render :show, status: :created, location: @pin }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class PinsController < ApplicationController
   def update
     respond_to do |format|
       if @pin.update(pin_params)
-        format.html { redirect_to pin_url(@pin), notice: "Pin was successfully updated." }
+        format.html { redirect_to admin_pin_url(@pin), notice: "Pin was successfully updated." }
         format.json { render :show, status: :ok, location: @pin }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class PinsController < ApplicationController
     @pin.destroy
 
     respond_to do |format|
-      format.html { redirect_to pins_url, notice: "Pin was successfully destroyed." }
+      format.html { redirect_to admin_pins_url, notice: "Pin was successfully destroyed." }
       format.json { head :no_content }
     end
   end

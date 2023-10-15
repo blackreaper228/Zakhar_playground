@@ -1,16 +1,21 @@
 <nav class="menubar">
   <div>
     <%= link_to "Home", welcome_index_url %>
-    <%= link_to "Pins", pins_url %>
+
+    <% if user_signed_in? && current_user.admin == true %>
+      <%= link_to "Pins", admin_pins_url %>
+      <%= link_to "Comments", admin_comments_url %>
+      <%= link_to "Subscriptions", admin_subscriptions_url %>
+    <% end%>
   </div>
 
   <div>
     <% if user_signed_in? %>
-      <%= link_to current_user.email, edit_user_registration_path %>
+      <%#= link_to current_user.email, edit_user_registration_path %>
       <%= link_to "Log out", destroy_user_session_path, method: :delete %>
     <% else %>
-      <%= link_to "Log in", new_user_session_path %>
-      <%= link_to "Register", new_user_registration_path %>
+      <%#= link_to "Log in", new_user_session_path %>
+      <%#= link_to "Register", new_user_registration_path %>
     <% end %>
   </div>
 </nav>

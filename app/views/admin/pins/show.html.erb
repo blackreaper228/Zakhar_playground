@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @pin %>
+
+<%= link_to "New Comment", new_admin_pin_comment_path(@pin) %>
+
+<h2>Comments</h2>
+
+<%= render @pin.comments %>
+
+<div>
+  <%= link_to "Edit this pin", edit_admin_pin_path(@pin) %> |
+  <%= link_to "Back to pins", admin_pins_path %>
+
+  <%= button_to "Destroy this pin", [:admin, @pin], method: :delete %>
+</div>

@@ -12,7 +12,7 @@
 
 <% if can? :manage, comment %>
   <div>
-    <%= link_to "Edit this comment", edit_pin_comment_path(@pin, comment) %>
-    <%= button_to "Destroy this comment", [@pin, comment], method: :delete %>
+    <%= link_to "Edit this comment", edit_admin_pin_comment_path(@pin, comment) %>
+    <%= button_to "Destroy this comment", [:admin, @pin, comment], method: :delete %>
   </div>
 <% end %>

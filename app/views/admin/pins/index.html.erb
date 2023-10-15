@@ -2,12 +2,12 @@
 
 <h1>Pins</h1>
 
-<%= link_to "New pin", new_pin_path %>
+<%= link_to "New pin", new_admin_pin_path %>
 
 <div id="pins">
   <% @pins.each do |pin| %>
 
-    <%= link_to pin, class: 'pinCard' do %>
+    <%= link_to [:admin, pin], class: 'pinCard' do %>
       <%= render pin %>
     <% end %>
 
